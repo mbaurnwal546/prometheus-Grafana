@@ -25,7 +25,11 @@ helm install --name prometheus --set server.persistentVolume.enabled=false,alert
 export POD_NAME=$(kubectl get pods --namespace default -l "app=prometheus,component=server" -o jsonpath="{.items[0].metadata.name}")
 kubectl --namespace default port-forward $POD_NAME 9090 &
 socat TCP4-LISTEN:9091,fork TCP4:localhost:9090 &
+
+Now access: Now access through:http://<server_ip>:9091/ 
 ```
+
+
 ## Install Grafana
 sudo ./install-grafana.sh
 
